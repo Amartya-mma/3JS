@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LINE</title>
+    <style>
+    body{
+        margin:0;
+    }
+    canvas{
+        height:100%;
+        width:100%;
+    }
+    </style>
+</head>
+<body>
+<script src="3js/threejs.js"></script>;
+<script>
+var scene=new THREE.Scene();
+
+var camera=new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,1,500);
+camera.position.set(0,0,100);
+
+var renderer=new THREE.WebGLRenderer();
+renderer.setClearColor("#e5e5e5");
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+var geometry=new THREE.Geometry()
+geometry.vertices.push(new THREE.Vector3(-50,0,0));
+geometry.vertices.push(new THREE.Vector3(0,20,0));
+geometry.vertices.push(new THREE.Vector3(50,0,0));
+
+var material=new THREE.LineDashedMaterial({color:0x0000ff});
+
+var line= new THREE.Line(geometry,material);
+
+document.body.appendChild(renderer.domElement);
+scene.add(line);
+renderer.render(scene,camera);
+
+
+
+
+
+</script>
+</body>
+</html>
